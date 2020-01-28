@@ -1,0 +1,20 @@
+---
+version: "3"
+services:
+  web:
+    # replace: image with your name and repo details
+    image: <docker_hub_login>/<repo_name>:<tag>
+    deploy:
+      replicas: 5
+      resources:
+        limits:
+          cpus: "0.1"
+          memory: 50M
+      restart_policy:
+        condition: on-failure
+    ports:
+      - "80:80"
+    networks:
+      - webnet
+networks:
+ webnet:
